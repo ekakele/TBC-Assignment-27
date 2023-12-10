@@ -11,6 +11,7 @@
 		B5B053FA2B26059D0035FD62 /* GroceryShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B053F92B26059D0035FD62 /* GroceryShopView.swift */; };
 		B5B053FC2B26059F0035FD62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B053FB2B26059F0035FD62 /* Assets.xcassets */; };
 		B5B053FF2B26059F0035FD62 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B053FE2B26059F0035FD62 /* Preview Assets.xcassets */; };
+		B5B0540A2B261DA40035FD62 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B054092B261DA40035FD62 /* ProductModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		B5B053F92B26059D0035FD62 /* GroceryShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryShopView.swift; sourceTree = "<group>"; };
 		B5B053FB2B26059F0035FD62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5B053FE2B26059F0035FD62 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B5B054092B261DA40035FD62 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				B5B053F72B26059D0035FD62 /* Assignment_27App.swift */,
 				B5B053F92B26059D0035FD62 /* GroceryShopView.swift */,
+				B5B054092B261DA40035FD62 /* ProductModel.swift */,
 				B5B053FB2B26059F0035FD62 /* Assets.xcassets */,
 				B5B053FD2B26059F0035FD62 /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5B053FA2B26059D0035FD62 /* GroceryShopView.swift in Sources */,
+				B5B0540A2B261DA40035FD62 /* ProductModel.swift in Sources */,
 				B5B053F82B26059D0035FD62 /* Assignment_27App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
