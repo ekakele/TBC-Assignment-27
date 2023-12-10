@@ -199,6 +199,8 @@ struct ReductionButton: View {
 
 //MARK: - Custom Divider
 struct CustomDivider: View {
+    
+    //MARK: - Body
     var body: some View {
         VStack {
             Divider()
@@ -209,6 +211,7 @@ struct CustomDivider: View {
         }
     }
 }
+
 //MARK: - Preview
 #Preview {
     GroceryShop()

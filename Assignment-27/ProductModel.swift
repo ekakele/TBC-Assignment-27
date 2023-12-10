@@ -13,7 +13,7 @@ struct Product: Identifiable {
     let id = UUID()
     let image: String
     let title: String
-    var price: String
+    var price: Double
     //    var stockAmount: Int
 }
 
@@ -23,32 +23,32 @@ struct ProductList {
         Product(
             image: "broccoli",
             title: "Broccoli",
-            price: "3.99$ (kg)"
+            price: 3.99
         ),
         Product(
             image: "carrot",
             title: "Carrot",
-            price: "0.99$ (kg)"
+            price: 0.99
         ),
         Product(
             image: "pepper",
             title: "Bell Pepper",
-            price: "5.99$ (kg)"
+            price: 5.99
         ),
         Product(
             image: "ginger",
             title: "Ginger",
-            price: "4.99$ (kg)"
+            price: 4.99
         ),
         Product(
             image: "lettuce",
             title: "Lettuce",
-            price: "1.99$ (kg)"
+            price: 1.99
         ),
         Product(
             image: "squash",
             title: "Butternut Squash",
-            price: "3.99$ (kg)"
+            price: 3.99
         )
     ]
     
@@ -56,17 +56,17 @@ struct ProductList {
         Product(
             image: "strawberry",
             title: "Strawberry",
-            price: "6.99$ (kg)"
+            price: 6.99
         ),
         Product(
             image: "banana",
             title: "Banana",
-            price: "3.99$ (kg)"
+            price: 3.99
         ),
         Product(
             image: "blueberry",
             title: "Organic Blueberry",
-            price: "14.99$ (kg)"
+            price: 14.99
         )
     ]
     
@@ -74,17 +74,17 @@ struct ProductList {
         Product(
             image: "beef",
             title: "Beef",
-            price: "18.99$ (kg)"
+            price: 18.99
         ),
         Product(
             image: "pork",
             title: "Pork Steak",
-            price: "12.99$ (kg)"
+            price: 12.99
         ),
         Product(
             image: "chicken",
             title: "Chicken Breast",
-            price: "9.99$ (kg)"
+            price: 9.99
         )
     ]
     
@@ -92,12 +92,12 @@ struct ProductList {
         Product(
             image: "salmon",
             title: "Salmon Fillet",
-            price: "39.99$ (kg)"
+            price: 39.99
         ),
         Product(
             image: "shrimps",
             title: "Shrimps",
-            price: "34.99$ (kg)"
+            price: 34.99
         )
     ]
 }
