@@ -7,6 +7,26 @@
 
 import SwiftUI
 
+struct GroceryShopTabView: View {
+    var body: some View {
+        TabView {
+            GroceryShop()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Shop")
+                }
+            
+            ProductCartView()
+                .tabItem {
+                    Image(systemName: "cart")
+                    Text("Shop")
+                }
+        }
+        .accentColor(.appGreen)
+    }
+}
+
+
 struct GroceryShop: View {
     //MARK: State Properties
     @State private var vegetables = ProductList.Vegetables
@@ -16,6 +36,19 @@ struct GroceryShop: View {
     
     //MARK: - Body
     var body: some View {
+        
+        
+        //            Text("scroll to see more")
+        //                .font(.system(size: 10))
+        //                .fontWeight(.light)
+        //                .foregroundColor(.blue)
+        //
+        //            Image(systemName: "arrow.forward")
+        //                .resizable()
+        //                .frame(width: 8, height: 6)
+        //                .foregroundColor(.blue)
+        //                .padding(.trailing, 20)
+        
         NavigationView {
             ZStack(alignment: .top) {
                 Color.white
@@ -43,10 +76,16 @@ struct GroceryShop: View {
                 }
             }
             //            .padding(.vertical, 0)
-            
         }
     }
 }
+
+struct ProductCartView: View {
+    var body: some View {
+        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Hello, world!@*/Text("Hello, world!")/*@END_MENU_TOKEN@*/
+    }
+}
+
 
 
 //MARK: - ScrollView
@@ -174,7 +213,7 @@ struct IncrementButton: View {
         }, label: {
             Image(systemName: "plus.circle.fill")
                 .resizable()
-                .foregroundColor(Color(red: 0.14, green: 0.67, blue: 0.29))
+                .foregroundColor(.appGreen)
                 .frame(width: 20, height: 20)
         }
         )
@@ -194,7 +233,7 @@ struct ReductionButton: View {
         }, label: {
             Image(systemName: "minus.circle.fill")
                 .resizable()
-                .foregroundColor(Color(red: 0.14, green: 0.67, blue: 0.29))
+                .foregroundColor(.appGreen)
                 .frame(width: 20, height: 20)
         }
         )
@@ -204,5 +243,5 @@ struct ReductionButton: View {
 
 //MARK: - Preview
 #Preview {
-    GroceryShop()
+    GroceryShopTabView()
 }
