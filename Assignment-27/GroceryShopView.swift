@@ -10,6 +10,10 @@ import SwiftUI
 struct GroceryShop: View {
     //MARK: Properties
     
+    
+    
+    
+    //MARK: - Body
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
@@ -67,7 +71,7 @@ struct GroceryShop: View {
                             CustomDivider()
                             
                             ProductCell()
-
+                            
                         }
                     }
                     .padding(.horizontal, 12)
@@ -82,6 +86,16 @@ struct GroceryShop: View {
 
 //MARK: - Product
 struct ProductCell: View {
+    //MARK: - Properties
+    @ State private var vegetables = ProductList.Vegetables
+    @ State private var fruits = ProductList.Fruits
+    @ State private var meat = ProductList.Meat
+    @ State private var seafood = ProductList.Seafood
+    
+    @State private var quantity = 0
+    
+    
+    //MARK: - Body
     var body: some View {
         VStack {
             
@@ -92,7 +106,7 @@ struct ProductCell: View {
             
             //title & price stack
             VStack(spacing: 2) {
-                Text("Broccoli")
+                Text("Banana")
                     .font(.system(size: 16))
                     .bold()
                     .foregroundColor(.black)
@@ -104,16 +118,8 @@ struct ProductCell: View {
             
             //plus / minus buttons & product quantity
             HStack(spacing: 12) {
-                Button(action: {
-                    print("pressed")
-                }, label: {
-                    Image(systemName: "minus.circle.fill")
-                        .resizable()
-                        .foregroundColor(Color(red: 0.14, green: 0.67, blue: 0.29))
-                        .frame(width: 20, height: 20)
-                }
-                )
                 
+                ReductionButton(count: $quantity)
                 
                 //quantity & +/- buttons
                 ZStack{
@@ -121,7 +127,7 @@ struct ProductCell: View {
                         .frame(width: 20, height: 20)
                         .cornerRadius(6)
                     
-                    Text("1")
+                    Text("\(quantity)")
                         .font(.system(size: 12))
                         .foregroundColor(.black)
                         .overlay(
@@ -132,16 +138,7 @@ struct ProductCell: View {
                         )
                 }
                 
-                
-                Button(action: {
-                    print("pressed")
-                }, label: {
-                    Image(systemName: "plus.circle.fill")
-                        .resizable()
-                        .foregroundColor(Color(red: 0.14, green: 0.67, blue: 0.29))
-                        .frame(width: 20, height: 20)
-                }
-                )
+                IncrementButton(count: $quantity)
             }
         }
         .frame(width: 110, height: 120)
@@ -158,6 +155,47 @@ struct ProductCell: View {
         
     }
 }
+
+
+//MARK: - (+/-) Buttons
+struct IncrementButton: View {
+    //MARK: - Properties
+    @Binding var count: Int
+    
+    //MARK: - Body
+    var body: some View {
+        Button(action: {
+            count += 1
+        }, label: {
+            Image(systemName: "plus.circle.fill")
+                .resizable()
+                .foregroundColor(Color(red: 0.14, green: 0.67, blue: 0.29))
+                .frame(width: 20, height: 20)
+        }
+        )
+    }
+}
+
+struct ReductionButton: View {
+    //MARK: - Properties
+    @Binding var count: Int
+    
+    //MARK: - Body
+    var body: some View {
+        Button(action: {
+            if count > 0 {
+                count -= 1
+            }
+        }, label: {
+            Image(systemName: "minus.circle.fill")
+                .resizable()
+                .foregroundColor(Color(red: 0.14, green: 0.67, blue: 0.29))
+                .frame(width: 20, height: 20)
+        }
+        )
+    }
+}
+
 
 //MARK: - Custom Divider
 struct CustomDivider: View {
