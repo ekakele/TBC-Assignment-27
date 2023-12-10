@@ -67,6 +67,16 @@ struct ProductList {
             image: "blueberry",
             title: "Organic Blueberry",
             price: 14.99
+        ),
+        Product(
+            image: "apple",
+            title: "Red Apple",
+            price: 2.99
+        ),
+        Product(
+            image: "kiwi",
+            title: "Organic Kiwi",
+            price: 6.99
         )
     ]
     
@@ -98,6 +108,16 @@ struct ProductList {
             image: "shrimps",
             title: "Shrimps",
             price: 34.99
+        ),
+        Product(
+            image: "oyster",
+            title: "Oyster",
+            price: 15.99
+        ),
+        Product(
+            image: "mussel",
+            title: "Mussel",
+            price: 19.99
         )
     ]
 }
