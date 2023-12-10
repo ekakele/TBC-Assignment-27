@@ -76,9 +76,7 @@ struct ProductSectionHorizontalScrollView: View {
                 .foregroundColor(.blue)
                 .padding(.trailing, 20)
         }
-        
-        CustomDivider()
-        
+                
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
                 ForEach($products) { item in
@@ -199,21 +197,6 @@ struct ReductionButton: View {
     }
 }
 
-
-//MARK: - Custom Divider
-struct CustomDivider: View {
-    
-    //MARK: - Body
-    var body: some View {
-        VStack {
-            Divider()
-                .background(Color.gray)
-                .frame(height: 1)
-                .opacity(0.5)
-                .padding(.leading, 150)
-        }
-    }
-}
 
 //MARK: - Preview
 #Preview {
