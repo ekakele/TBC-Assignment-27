@@ -78,7 +78,7 @@ struct ProductSectionHorizontalScrollView: View {
                 .foregroundColor(.blue)
                 .padding(.trailing, 20)
         }
-                
+        
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
                 ForEach($products) { item in
@@ -92,11 +92,14 @@ struct ProductSectionHorizontalScrollView: View {
 
 //MARK: - ProductCell
 struct ProductCell: View {
-    //MARK: - Binding Properties
+    //MARK: - Properties
     @Binding var product: Product
     
-    //MARK: - State Properties
     @State private var quantity = 0
+    
+    private var formattedPrice: String {
+        return String(format: "%.2f", floor(product.price * 100) / 100)
+    }
     
     //MARK: - Body
     var body: some View {
@@ -114,17 +117,16 @@ struct ProductCell: View {
                     .bold()
                     .foregroundColor(.black)
                 
-                Text("\(product.price)$ (kg)")
+                Text("\(formattedPrice)$ (kg)")
                     .font(.system(size: 12))
                     .foregroundColor(.black)
             }.padding(.bottom, 3)
             
-            //plus / minus buttons & product quantity
+            //quantity & +/- buttons
             HStack(spacing: 12) {
                 
                 ReductionButton(count: $quantity)
                 
-                //quantity & +/- buttons
                 ZStack{
                     Color.white
                         .frame(width: 20, height: 20)
