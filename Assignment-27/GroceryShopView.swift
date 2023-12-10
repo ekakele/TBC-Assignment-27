@@ -68,11 +68,13 @@ struct ProductSectionHorizontalScrollView: View {
             Spacer()
             
             Text("scroll to see more")
-                .font(.footnote)
+                .font(.system(size: 10))
                 .fontWeight(.light)
                 .foregroundColor(.blue)
             
             Image(systemName: "arrow.forward")
+                .resizable()
+                .frame(width: 8, height: 6)
                 .foregroundColor(.blue)
                 .padding(.trailing, 20)
         }
