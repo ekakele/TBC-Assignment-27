@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct GroceryShop: View {
-    //MARK: Properties
-    
-    
-    
+    //MARK: State Properties
+    @State private var vegetables = ProductList.Vegetables
+    @State private var fruits = ProductList.Fruits
+    @State private var meat = ProductList.Meat
+    @State private var seafood = ProductList.Seafood
     
     //MARK: - Body
     var body: some View {
@@ -21,58 +22,21 @@ struct GroceryShop: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 ScrollView {
-                    VStack(spacing: 6) {
+                    VStack(alignment: .leading, spacing: 6) {
                         
                         Image("banner")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .cornerRadius(20)
                         
-                        //products
-                        VStack(alignment: .leading, spacing: 4) {
-                            //section title
-                            Text("Vegetables")
-                                .font(.title3)
-                                .bold()
-                                .foregroundColor(.black)
-                            
-                            CustomDivider()
-                            
-                            
-                            ProductCell()
-                            
-                            //section title
-                            Text("Fruits")
-                                .font(.title3)
-                                .bold()
-                                .foregroundColor(.black)
-                            
-                            CustomDivider()
-                            
-                            ProductCell()
-                            
-                            //section title
-                            Text("Meat")
-                                .font(.title3)
-                                .bold()
-                                .foregroundColor(.black)
-                            
-                            CustomDivider()
-                            
-                            
-                            ProductCell()
-                            
-                            //section title
-                            Text("Seafood")
-                                .font(.title3)
-                                .bold()
-                                .foregroundColor(.black)
-                            
-                            CustomDivider()
-                            
-                            ProductCell()
-                            
-                        }
+                        ProductSectionHorizontalScrollView(title: "Vegetables", products: $vegetables)
+                        
+                        ProductSectionHorizontalScrollView(title: "Fruits", products: $fruits)
+                        
+                        ProductSectionHorizontalScrollView(title: "Meat", products: $meat)
+                        
+                        ProductSectionHorizontalScrollView(title: "Seafood", products: $seafood)
+                        
                     }
                     .padding(.horizontal, 12)
                     .navigationBarTitle("Shop Grocery Online", displayMode: .inline)
@@ -84,34 +48,73 @@ struct GroceryShop: View {
     }
 }
 
-//MARK: - Product
-struct ProductCell: View {
+
+//MARK: - ScrollView
+struct ProductSectionHorizontalScrollView: View {
     //MARK: - Properties
-    @ State private var vegetables = ProductList.Vegetables
-    @ State private var fruits = ProductList.Fruits
-    @ State private var meat = ProductList.Meat
-    @ State private var seafood = ProductList.Seafood
+    let title: String
     
+    //MARK: - Binding Properties
+    @Binding var products: [Product]
+    
+    //MARK: - Body
+    var body: some View {
+        HStack {
+            Text(title)
+                .font(.title3)
+                .bold()
+                .foregroundColor(.black)
+            
+            Spacer()
+            
+            Text("scroll to see more")
+                .font(.footnote)
+                .fontWeight(.light)
+                .foregroundColor(.blue)
+            
+            Image(systemName: "arrow.forward")
+                .foregroundColor(.blue)
+                .padding(.trailing, 20)
+        }
+        
+        CustomDivider()
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 12) {
+                ForEach($products) { item in
+                    ProductCell(product: item)
+                }
+            }
+        }
+    }
+}
+
+
+//MARK: - ProductCell
+struct ProductCell: View {
+    //MARK: - Binding Properties
+    @Binding var product: Product
+    
+    //MARK: - State Properties
     @State private var quantity = 0
-    
     
     //MARK: - Body
     var body: some View {
         VStack {
             
-            Image("banana")
+            Image("\(product.image)")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 80, height: 60)
             
             //title & price stack
             VStack(spacing: 2) {
-                Text("Banana")
+                Text("\(product.title)")
                     .font(.system(size: 16))
                     .bold()
                     .foregroundColor(.black)
                 
-                Text("$2.99 (kg)")
+                Text("\(product.price)$ (kg)")
                     .font(.system(size: 12))
                     .foregroundColor(.black)
             }.padding(.bottom, 3)
@@ -205,7 +208,7 @@ struct CustomDivider: View {
         VStack {
             Divider()
                 .background(Color.gray)
-                .frame(height: 2)
+                .frame(height: 1)
                 .opacity(0.5)
                 .padding(.leading, 150)
         }
