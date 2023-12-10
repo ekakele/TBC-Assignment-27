@@ -16,49 +16,63 @@ struct GroceryShop: View {
                 Color.white
                     .edgesIgnoringSafeArea(.all)
                 
-                
-                VStack(spacing: 6) {
-                    
-                    Image("banner")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .cornerRadius(20)
-                    
-                    //products
-                    VStack(alignment: .leading, spacing: 4) {
-                        //section title
-                        Text("Vegetables")
-                            .font(.title3)
-                            .bold()
-                            .foregroundColor(.black)
+                ScrollView {
+                    VStack(spacing: 6) {
                         
-                        CustomDivider()
+                        Image("banner")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .cornerRadius(20)
+                        
+                        //products
+                        VStack(alignment: .leading, spacing: 4) {
+                            //section title
+                            Text("Vegetables")
+                                .font(.title3)
+                                .bold()
+                                .foregroundColor(.black)
+                            
+                            CustomDivider()
+                            
+                            
+                            ProductCell()
+                            
+                            //section title
+                            Text("Fruits")
+                                .font(.title3)
+                                .bold()
+                                .foregroundColor(.black)
+                            
+                            CustomDivider()
+                            
+                            ProductCell()
+                            
+                            //section title
+                            Text("Meat")
+                                .font(.title3)
+                                .bold()
+                                .foregroundColor(.black)
+                            
+                            CustomDivider()
+                            
+                            
+                            ProductCell()
+                            
+                            //section title
+                            Text("Seafood")
+                                .font(.title3)
+                                .bold()
+                                .foregroundColor(.black)
+                            
+                            CustomDivider()
+                            
+                            ProductCell()
 
-                        
-                        ProductCell()
-                        
-                        //section title
-                        Text("Meat")
-                            .font(.title3)                            .bold()
-                            .foregroundColor(.black)
-                        
-                        CustomDivider()
-
-                        
-                        ProductCell()
-                        
-                        //section title
-                        Text("Seafood")
-                            .font(.title3)                            .bold()
-                            .foregroundColor(.black)
-                        
-                        CustomDivider()
-                        
-                        ProductCell()
+                        }
                     }
+                    .padding(.horizontal, 12)
+                    .navigationBarTitle("Shop Grocery Online", displayMode: .inline)
                 }
-                .padding(.horizontal, 12)
-                .navigationBarTitle("Shop Grocery Online", displayMode: .inline)
             }
             //            .padding(.vertical, 0)
             
@@ -71,10 +85,10 @@ struct ProductCell: View {
     var body: some View {
         VStack {
             
-            Image("broccoli")
+            Image("banana")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 50, height: 50)
+                .frame(width: 80, height: 60)
             
             //title & price stack
             VStack(spacing: 2) {

@@ -52,6 +52,24 @@ struct ProductList {
         )
     ]
     
+    static let Fruits = [
+        Product(
+            image: "strawberry",
+            title: "Strawberry",
+            price: "6.99$ (kg)"
+        ),
+        Product(
+            image: "banana",
+            title: "Banana",
+            price: "3.99$ (kg)"
+        ),
+        Product(
+            image: "blueberry",
+            title: "Organic Blueberry",
+            price: "14.99$ (kg)"
+        )
+    ]
+    
     static let Meat = [
         Product(
             image: "beef",
