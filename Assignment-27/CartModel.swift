@@ -10,6 +10,13 @@ import Foundation
 class CartModel: ObservableObject {
     @Published var items: [Product] = []
     
+    var totalPrice: String {
+            let total = items.reduce(0) { sum, product in
+                sum + (product.price * Double(product.quantity))
+            }
+            return String(format: "%.2f", total)
+        }
+    
     func addToCart(product: Product) {
         if let index = items.firstIndex(where: { $0.id == product.id }) {
             items[index].quantity += 1

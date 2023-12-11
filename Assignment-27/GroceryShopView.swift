@@ -81,8 +81,21 @@ struct CartView: View {
     //MARK: - Body
     var body: some View {
         NavigationView {
-            List(cart.items) { item in
-                CartItemRowView(item: item)
+            List {
+                ForEach(cart.items) { item in
+                    CartItemRowView(item: item)
+                }
+                
+                HStack {
+                    Text("Total Price:")
+                        .font(.system(size: 20))
+                        .bold()
+                    Spacer()
+                    Text("\(cart.totalPrice)$")
+                        .font(.system(size: 20))
+                        .bold()
+                }
+                .padding()
             }
             .navigationBarTitle("My Cart", displayMode: .inline)
         }
