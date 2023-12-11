@@ -84,7 +84,7 @@ struct CartView: View {
             List(cart.items) { item in
                 CartItemRowView(item: item)
             }
-            .navigationBarTitle("Cart", displayMode: .inline)
+            .navigationBarTitle("My Cart", displayMode: .inline)
         }
     }
 }
@@ -97,35 +97,37 @@ struct CartItemRowView: View {
             Image(item.image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .clipShape(Circle())
-                .frame(width: 40, height: 40)
+                .frame(width: 60, height: 60)
             
             Spacer()
-                .frame(width: 10)
             
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 6) {
                 Text(item.title)
-                    .font(.headline)
+                    .font(.system(size: 20))
                     .bold()
                 
-                Text("\(item.price)")
-                    .font(.subheadline)
-                    .fontWeight(.light)
-                    .foregroundColor(Color(red: 0.61, green: 0.61, blue: 0.61))
+                Text("1 kg price x \(item.quantity) Qty")
+                    .font(.system(size: 18))
+                    .foregroundColor(.gray)
             }
             
             Spacer()
             
-            Text("\(item.quantity)")
-                .font(.subheadline)
-                .fontWeight(.light)
-                .foregroundColor(Color(red: 0.72, green: 0.72, blue: 0.72))
+            let rowTotalPrice = item.price * Double(item.quantity)
+            let formattedRowTotalPrice = String(format: "%.2f", rowTotalPrice)
+            
+            Text("\(formattedRowTotalPrice)$")
+                .font(.system(size: 14))
+                .overlay(
+                    Circle()
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(.appGreen)
+                        .opacity(0.2)
+                )
         }
-        .padding(.vertical, 12)
-        .padding(.horizontal, 16)
-        
-        Divider()
-        
+        .frame(width: .infinity, height: 40)
+        .padding(.vertical, 10)
+        .padding(.horizontal, 4)
     }
 }
 
@@ -178,10 +180,6 @@ struct ProductCell: View {
     
     @State private var quantity = 0
     
-    private var formattedPrice: String {
-        return String(format: "%.2f", floor(product.price * 100) / 100)
-    }
-    
     @EnvironmentObject var cart: CartModel
     
     
@@ -201,7 +199,7 @@ struct ProductCell: View {
                     .bold()
                     .foregroundColor(.black)
                 
-                Text("\(formattedPrice)$ (kg)")
+                Text("\(product.formattedPrice)$ (kg)")
                     .font(.system(size: 12))
                     .foregroundColor(.black)
             }.padding(.bottom, 3)

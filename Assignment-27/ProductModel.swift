@@ -120,3 +120,11 @@ struct ProductList {
         )
     ]
 }
+
+
+//MARK: Product extension
+extension Product {
+    var formattedPrice: String {
+        return String(format: "%.2f", floor(self.price * 100) / 100)
+    }
+}
