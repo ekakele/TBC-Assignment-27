@@ -95,7 +95,6 @@ struct CartView: View {
                         .font(.system(size: 20))
                         .bold()
                 }
-                .padding()
             }
             .navigationBarTitle("My Cart", displayMode: .inline)
         }
@@ -104,6 +103,7 @@ struct CartView: View {
 
 struct CartItemRowView: View {
     let item: Product
+    @EnvironmentObject var cart: CartModel
     
     var body: some View {
         HStack {
@@ -111,24 +111,35 @@ struct CartItemRowView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 60, height: 60)
-            
-            Spacer()
+                .padding(.trailing, 3)
             
             VStack(alignment: .leading, spacing: 6) {
                 Text(item.title)
                     .font(.system(size: 20))
                     .bold()
+                    .lineLimit(1)
                 
                 Text("1 kg price x \(item.quantity) Qty")
                     .font(.system(size: 18))
                     .foregroundColor(.gray)
+            }
+            .frame(width: 150)
+            .padding(.trailing, 8)
+            
+            Button(action: {
+                cart.removeAllFromCart(product: item)
+            }) {
+                Image(systemName: "trash.fill")
+                    .resizable()
+                    .foregroundColor(.red).opacity(0.8)
+                    .frame(width: 20, height: 20)
             }
             
             Spacer()
             
             let rowTotalPrice = item.price * Double(item.quantity)
             let formattedRowTotalPrice = String(format: "%.2f", rowTotalPrice)
-            
+        
             Text("\(formattedRowTotalPrice)$")
                 .font(.system(size: 14))
                 .overlay(
@@ -139,8 +150,7 @@ struct CartItemRowView: View {
                 )
         }
         .frame(width: .infinity, height: 40)
-        .padding(.vertical, 10)
-        .padding(.horizontal, 4)
+        .padding(.vertical, 8)
     }
 }
 

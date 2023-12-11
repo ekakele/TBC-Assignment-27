@@ -37,6 +37,14 @@ class CartModel: ObservableObject {
         }
     }
     
+    func removeAllFromCart(product: Product) {
+        if let index = items.firstIndex(where: { $0.id == product.id }) {
+            if items[index].quantity > 0 {
+                items.remove(at: index)
+            } 
+        }
+    }
+    
     
 }
 
