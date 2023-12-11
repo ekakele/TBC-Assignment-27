@@ -22,7 +22,7 @@ struct GroceryShopTabView: View {
                     Image(systemName: "cart")
                     Text("Shop")
                 }
-                .badge(5)
+                .badge(/*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
         }
         .accentColor(.appGreen)
     }
@@ -125,6 +125,8 @@ struct ProductCell: View {
     @Binding var product: Product
     
     @State private var quantity = 0
+    
+    
     
     private var formattedPrice: String {
         return String(format: "%.2f", floor(product.price * 100) / 100)

@@ -12,6 +12,7 @@ struct Product: Identifiable {
     let image: String
     let title: String
     let price: Double
+    var quantity: Int = 0
     //    var stockAmount: Int
 }
 
