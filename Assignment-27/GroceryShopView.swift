@@ -8,32 +8,38 @@
 import SwiftUI
 
 struct GroceryShopTabView: View {
+    @ObservedObject var cart = CartModel()
+    
     //MARK: - Body
     var body: some View {
         TabView {
-            GroceryShop()
+            ShopView()
                 .tabItem {
                     Image(systemName: "house")
                     Text("Shop")
                 }
+                .environmentObject(cart)
             
-            ProductCartView()
+            CartView()
                 .tabItem {
                     Image(systemName: "cart")
                     Text("Shop")
                 }
+                .environmentObject(cart)
                 .badge(/*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
         }
         .accentColor(.appGreen)
     }
 }
 
-struct GroceryShop: View {
+struct ShopView: View {
     //MARK: State Properties
     @State private var vegetables = ProductList.Vegetables
     @State private var fruits = ProductList.Fruits
     @State private var meat = ProductList.Meat
     @State private var seafood = ProductList.Seafood
+    
+    @EnvironmentObject var cart: CartModel
     
     //MARK: - Body
     var body: some View {
@@ -68,15 +74,49 @@ struct GroceryShop: View {
     }
 }
 
-struct ProductCartView: View {
+struct CartView: View {
     //MARK: - Properties
-
+    @EnvironmentObject var cart: CartModel
     
     //MARK: - Body
     var body: some View {
-        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Hello, world!@*/Text("Hello, world!")/*@END_MENU_TOKEN@*/
+        List(cart.items) { item in
+            HStack {
+                Image(item.image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .clipShape(Circle())
+                    .frame(width: 40, height: 40)
+                
+                Spacer()
+                    .frame(width: 10)
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(item.title)
+                        .font(.headline)
+                        .bold()
+                    //
+                    Text("\(item.price)")
+                        .font(.subheadline)
+                        .fontWeight(.light)
+                        .foregroundColor(Color(red: 0.61, green: 0.61, blue: 0.61))
+                }
+                
+                Spacer()
+                
+                Text("\(item.quantity)")
+                    .font(.subheadline)
+                    .fontWeight(.light)
+                    .foregroundColor(Color(red: 0.72, green: 0.72, blue: 0.72))
+            }
+            .padding(.vertical, 12)
+            .padding(.horizontal, 16)
+            
+            Divider()
+        }
     }
 }
+
 
 //MARK: - ScrollView
 struct ProductSectionHorizontalScrollView: View {
@@ -126,11 +166,12 @@ struct ProductCell: View {
     
     @State private var quantity = 0
     
-    
-    
     private var formattedPrice: String {
         return String(format: "%.2f", floor(product.price * 100) / 100)
     }
+    
+    @EnvironmentObject var cart: CartModel
+    
     
     //MARK: - Body
     var body: some View {
@@ -156,7 +197,7 @@ struct ProductCell: View {
             //quantity & +/- buttons
             HStack(spacing: 12) {
                 
-                ReductionButton(count: $quantity)
+                ReductionButton(count: $quantity, product: product)
                 
                 ZStack{
                     Color.white
@@ -174,7 +215,7 @@ struct ProductCell: View {
                         )
                 }
                 
-                IncrementButton(count: $quantity)
+                IncrementButton(count: $quantity, product: product)
             }
         }
         .frame(width: 110, height: 120)
@@ -197,11 +238,14 @@ struct ProductCell: View {
 struct IncrementButton: View {
     //MARK: - Properties
     @Binding var count: Int
+    var product: Product
+    @EnvironmentObject var cart: CartModel
     
     //MARK: - Body
     var body: some View {
         Button(action: {
             count += 1
+            cart.addToCart(product: product)
         }, label: {
             Image(systemName: "plus.circle.fill")
                 .resizable()
@@ -215,12 +259,16 @@ struct IncrementButton: View {
 struct ReductionButton: View {
     //MARK: - Properties
     @Binding var count: Int
+    var product: Product
+    @EnvironmentObject var cart: CartModel
+    
     
     //MARK: - Body
     var body: some View {
         Button(action: {
             if count > 0 {
                 count -= 1
+                cart.removeFromCart(product: product)
             }
         }, label: {
             Image(systemName: "minus.circle.fill")

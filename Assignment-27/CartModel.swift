@@ -1,5 +1,5 @@
 //
-//  CartItemModel.swift
+//  CartModel.swift
 //  Assignment-27
 //
 //  Created by Eka Kelenjeridze on 11.12.23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Cart: ObservableObject {
+class CartModel: ObservableObject {
     @Published var items: [Product] = []
     
     func addToCart(product: Product) {
@@ -19,7 +19,7 @@ class Cart: ObservableObject {
             items.append(newProduct)
         }
     }
-
+    
     func removeFromCart(product: Product) {
         if let index = items.firstIndex(where: { $0.id == product.id }) {
             if items[index].quantity > 1 {
