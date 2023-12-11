@@ -26,7 +26,7 @@ struct GroceryShopTabView: View {
                     Text("Shop")
                 }
                 .environmentObject(cart)
-                .badge(/*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                .badge(cart.items.count)
         }
         .accentColor(.appGreen)
     }
