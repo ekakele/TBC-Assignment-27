@@ -81,43 +81,51 @@ struct CartView: View {
     //MARK: - Body
     var body: some View {
         NavigationView {
-            
             List(cart.items) { item in
-                HStack {
-                    Image(item.image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .clipShape(Circle())
-                        .frame(width: 40, height: 40)
-                    
-                    Spacer()
-                        .frame(width: 10)
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(item.title)
-                            .font(.headline)
-                            .bold()
-                        //
-                        Text("\(item.price)")
-                            .font(.subheadline)
-                            .fontWeight(.light)
-                            .foregroundColor(Color(red: 0.61, green: 0.61, blue: 0.61))
-                    }
-                    
-                    Spacer()
-                    
-                    Text("\(item.quantity)")
-                        .font(.subheadline)
-                        .fontWeight(.light)
-                        .foregroundColor(Color(red: 0.72, green: 0.72, blue: 0.72))
-                }
-                .padding(.vertical, 12)
-                .padding(.horizontal, 16)
-                
-                Divider()
+                CartItemRowView(item: item)
             }
             .navigationBarTitle("Cart", displayMode: .inline)
         }
+    }
+}
+
+struct CartItemRowView: View {
+    let item: Product
+    
+    var body: some View {
+        HStack {
+            Image(item.image)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipShape(Circle())
+                .frame(width: 40, height: 40)
+            
+            Spacer()
+                .frame(width: 10)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(item.title)
+                    .font(.headline)
+                    .bold()
+                
+                Text("\(item.price)")
+                    .font(.subheadline)
+                    .fontWeight(.light)
+                    .foregroundColor(Color(red: 0.61, green: 0.61, blue: 0.61))
+            }
+            
+            Spacer()
+            
+            Text("\(item.quantity)")
+                .font(.subheadline)
+                .fontWeight(.light)
+                .foregroundColor(Color(red: 0.72, green: 0.72, blue: 0.72))
+        }
+        .padding(.vertical, 12)
+        .padding(.horizontal, 16)
+        
+        Divider()
+        
     }
 }
 
@@ -232,8 +240,6 @@ struct ProductCell: View {
                 .stroke(Color.gray, lineWidth: 1.0)
                 .opacity(0.5)
         )
-        
-        
     }
 }
 
