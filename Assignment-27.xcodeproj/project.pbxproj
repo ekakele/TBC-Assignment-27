@@ -12,6 +12,7 @@
 		B5B053FC2B26059F0035FD62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B053FB2B26059F0035FD62 /* Assets.xcassets */; };
 		B5B053FF2B26059F0035FD62 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B053FE2B26059F0035FD62 /* Preview Assets.xcassets */; };
 		B5B0540A2B261DA40035FD62 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B054092B261DA40035FD62 /* ProductModel.swift */; };
+		B5B0540C2B267A530035FD62 /* CartItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B0540B2B267A530035FD62 /* CartItemModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		B5B053FB2B26059F0035FD62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5B053FE2B26059F0035FD62 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B5B054092B261DA40035FD62 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		B5B0540B2B267A530035FD62 /* CartItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				B5B053F72B26059D0035FD62 /* Assignment_27App.swift */,
 				B5B053F92B26059D0035FD62 /* GroceryShopView.swift */,
 				B5B054092B261DA40035FD62 /* ProductModel.swift */,
+				B5B0540B2B267A530035FD62 /* CartItemModel.swift */,
 				B5B053FB2B26059F0035FD62 /* Assets.xcassets */,
 				B5B053FD2B26059F0035FD62 /* Preview Content */,
 			);
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5B0540C2B267A530035FD62 /* CartItemModel.swift in Sources */,
 				B5B053FA2B26059D0035FD62 /* GroceryShopView.swift in Sources */,
 				B5B0540A2B261DA40035FD62 /* ProductModel.swift in Sources */,
 				B5B053F82B26059D0035FD62 /* Assignment_27App.swift in Sources */,

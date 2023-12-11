@@ -11,7 +11,7 @@ import SwiftUI
 struct Assignment_27App: App {
     var body: some Scene {
         WindowGroup {
-            GroceryShop()
+            GroceryShopTabView()
         }
     }
 }

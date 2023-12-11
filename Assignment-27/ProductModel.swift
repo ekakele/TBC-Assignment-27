@@ -7,13 +7,11 @@
 
 import Foundation
 
-
-
 struct Product: Identifiable {
     let id = UUID()
     let image: String
     let title: String
-    var price: Double
+    let price: Double
     //    var stockAmount: Int
 }
 
@@ -121,4 +119,3 @@ struct ProductList {
         )
     ]
 }
-

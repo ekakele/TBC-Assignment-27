@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GroceryShopTabView: View {
+    //MARK: - Body
     var body: some View {
         TabView {
             GroceryShop()
@@ -21,11 +22,11 @@ struct GroceryShopTabView: View {
                     Image(systemName: "cart")
                     Text("Shop")
                 }
+                .badge(5)
         }
         .accentColor(.appGreen)
     }
 }
-
 
 struct GroceryShop: View {
     //MARK: State Properties
@@ -36,18 +37,6 @@ struct GroceryShop: View {
     
     //MARK: - Body
     var body: some View {
-        
-        
-        //            Text("scroll to see more")
-        //                .font(.system(size: 10))
-        //                .fontWeight(.light)
-        //                .foregroundColor(.blue)
-        //
-        //            Image(systemName: "arrow.forward")
-        //                .resizable()
-        //                .frame(width: 8, height: 6)
-        //                .foregroundColor(.blue)
-        //                .padding(.trailing, 20)
         
         NavigationView {
             ZStack(alignment: .top) {
@@ -75,18 +64,19 @@ struct GroceryShop: View {
                     .navigationBarTitle("Shop Grocery Online", displayMode: .inline)
                 }
             }
-            //            .padding(.vertical, 0)
         }
     }
 }
 
 struct ProductCartView: View {
+    //MARK: - Properties
+
+    
+    //MARK: - Body
     var body: some View {
         /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Hello, world!@*/Text("Hello, world!")/*@END_MENU_TOKEN@*/
     }
 }
-
-
 
 //MARK: - ScrollView
 struct ProductSectionHorizontalScrollView: View {
