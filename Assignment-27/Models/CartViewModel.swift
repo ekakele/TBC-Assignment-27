@@ -1,22 +1,24 @@
 //
-//  CartModel.swift
+//  CartViewModel.swift
 //  Assignment-27
 //
-//  Created by Eka Kelenjeridze on 11.12.23.
+//  Created by Eka Kelenjeridze on 12.12.23.
 //
 
-import Foundation
+import SwiftUI
 
-class CartModel: ObservableObject {
+final class CartViewModel: ObservableObject {
+    //MARK: - Properties
     @Published var items: [Product] = []
     
     var totalPrice: String {
-            let total = items.reduce(0) { sum, product in
-                sum + (product.price * Double(product.quantity))
-            }
-            return String(format: "%.2f", total)
+        let total = items.reduce(0) { sum, product in
+            sum + (product.price * Double(product.quantity))
         }
+        return String(format: "%.2f", total)
+    }
     
+    //MARK: - Methods
     func addToCart(product: Product) {
         if let index = items.firstIndex(where: { $0.id == product.id }) {
             items[index].quantity += 1
@@ -41,10 +43,7 @@ class CartModel: ObservableObject {
         if let index = items.firstIndex(where: { $0.id == product.id }) {
             if items[index].quantity > 0 {
                 items.remove(at: index)
-            } 
+            }
         }
     }
-    
-    
 }
-

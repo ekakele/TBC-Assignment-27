@@ -8,6 +8,7 @@
 import Foundation
 
 struct Product: Identifiable {
+    //MARK: - Properties
     let id = UUID()
     let image: String
     let title: String
@@ -18,6 +19,7 @@ struct Product: Identifiable {
 
 
 struct ProductList {
+    //MARK: - Properties
     static let Vegetables = [
         Product(
             image: "broccoli",
