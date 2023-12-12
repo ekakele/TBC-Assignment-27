@@ -8,6 +8,7 @@
 import Foundation
 
 final class ShopViewModel: ObservableObject {
+    //MARK: - Properties
     @Published var vegetables = ProductList.Vegetables
     @Published var fruits = ProductList.Fruits
     @Published var meat = ProductList.Meat

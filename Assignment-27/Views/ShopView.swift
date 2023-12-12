@@ -49,6 +49,13 @@ struct ProductSectionHorizontalScrollView: View {
     //MARK: - Properties
     let title: String
     @Binding var products: [Product]
+    @EnvironmentObject var cartViewModel: CartViewModel
+    
+    var productViewModels: [ProductCellViewModel] {
+        products.map { product in
+            ProductCellViewModel(product: product, cartViewModel: cartViewModel)
+        }
+    }
     
     //MARK: - Body
     var body: some View {
@@ -74,8 +81,8 @@ struct ProductSectionHorizontalScrollView: View {
         
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
-                ForEach($products) { item in
-                    ProductCellView(product: item)
+                ForEach(productViewModels) { viewModel in
+                    ProductCellView(productCellViewModel: viewModel)
                 }
             }
         }

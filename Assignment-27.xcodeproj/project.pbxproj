@@ -12,6 +12,7 @@
 		B5AC7C512B283E8E00D21B8B /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AC7C502B283E8E00D21B8B /* ShopView.swift */; };
 		B5AC7C532B283F9700D21B8B /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AC7C522B283F9700D21B8B /* CartView.swift */; };
 		B5AC7C552B28479500D21B8B /* ProductCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AC7C542B28479500D21B8B /* ProductCellView.swift */; };
+		B5AC7C572B285F4D00D21B8B /* ProductCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AC7C562B285F4D00D21B8B /* ProductCellViewModel.swift */; };
 		B5B053F82B26059D0035FD62 /* Assignment_27App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B053F72B26059D0035FD62 /* Assignment_27App.swift */; };
 		B5B053FA2B26059D0035FD62 /* GroceryShopTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B053F92B26059D0035FD62 /* GroceryShopTabView.swift */; };
 		B5B053FC2B26059F0035FD62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B053FB2B26059F0035FD62 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		B5AC7C502B283E8E00D21B8B /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
 		B5AC7C522B283F9700D21B8B /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		B5AC7C542B28479500D21B8B /* ProductCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellView.swift; sourceTree = "<group>"; };
+		B5AC7C562B285F4D00D21B8B /* ProductCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellViewModel.swift; sourceTree = "<group>"; };
 		B5B053F42B26059D0035FD62 /* Assignment-27.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Assignment-27.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B053F72B26059D0035FD62 /* Assignment_27App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment_27App.swift; sourceTree = "<group>"; };
 		B5B053F92B26059D0035FD62 /* GroceryShopTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryShopTabView.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 		B5AC7C482B2838EC00D21B8B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B5AC7C562B285F4D00D21B8B /* ProductCellViewModel.swift */,
 				B5AC7C4D2B283D4A00D21B8B /* ShopViewModel.swift */,
 				B5AC7C4B2B28397500D21B8B /* CartViewModel.swift */,
 			);
@@ -189,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5AC7C4C2B28397500D21B8B /* CartViewModel.swift in Sources */,
+				B5AC7C572B285F4D00D21B8B /* ProductCellViewModel.swift in Sources */,
 				B5AC7C552B28479500D21B8B /* ProductCellView.swift in Sources */,
 				B5AC7C512B283E8E00D21B8B /* ShopView.swift in Sources */,
 				B5B053FA2B26059D0035FD62 /* GroceryShopTabView.swift in Sources */,

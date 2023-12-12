@@ -74,7 +74,7 @@ struct CartItemRowView: View {
             
             let rowTotalPrice = item.price * Double(item.quantity)
             let formattedRowTotalPrice = String(format: "%.2f", rowTotalPrice)
-        
+            
             Text("\(formattedRowTotalPrice)$")
                 .font(.system(size: 14))
                 .overlay(

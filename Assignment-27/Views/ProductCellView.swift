@@ -9,40 +9,38 @@ import SwiftUI
 
 struct ProductCellView: View {
     //MARK: - Properties
-    @Binding var product: Product
-    @State private var quantity = 0
+    @StateObject var productCellViewModel: ProductCellViewModel
     @EnvironmentObject var cartViewModel: CartViewModel
-    
     
     //MARK: - Body
     var body: some View {
         VStack {
             
-            Image("\(product.image)")
+            Image("\(productCellViewModel.product.image)")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 80, height: 60)
             
             VStack(spacing: 2) {
-                Text("\(product.title)")
+                Text("\(productCellViewModel.product.title)")
                     .font(.system(size: 16))
                     .bold()
                     .foregroundColor(.black)
                 
-                Text("\(product.formattedPrice)$ (kg)")
+                Text("\(productCellViewModel.product.formattedPrice)$ (kg)")
                     .font(.system(size: 12))
                     .foregroundColor(.black)
             }.padding(.bottom, 3)
             
             HStack(spacing: 12) {
-                ReductionButtonView(count: $quantity, product: product)
+                ReductionButtonView(viewModel: productCellViewModel)
                 
                 ZStack{
                     Color.white
                         .frame(width: 20, height: 20)
                         .cornerRadius(6)
                     
-                    Text("\(quantity)")
+                    Text("\(productCellViewModel.getQuantity())")
                         .font(.system(size: 12))
                         .foregroundColor(.black)
                         .overlay(
@@ -53,7 +51,7 @@ struct ProductCellView: View {
                         )
                 }
                 
-                IncrementButtonView(count: $quantity, product: product)
+                IncrementButtonView(viewModel: productCellViewModel)
             }
         }
         .frame(width: 110, height: 120)
@@ -71,16 +69,11 @@ struct ProductCellView: View {
 
 struct IncrementButtonView: View {
     //MARK: - Properties
-    @Binding var count: Int
-    var product: Product
-    @EnvironmentObject var cart: CartViewModel
+    @ObservedObject var viewModel: ProductCellViewModel
     
     //MARK: - Body
     var body: some View {
-        Button(action: {
-            count += 1
-            cart.addToCart(product: product)
-        }, label: {
+        Button(action: viewModel.incrementQuantity, label: {
             Image(systemName: "plus.circle.fill")
                 .resizable()
                 .foregroundColor(.appGreen)
@@ -92,18 +85,11 @@ struct IncrementButtonView: View {
 
 struct ReductionButtonView: View {
     //MARK: - Properties
-    @Binding var count: Int
-    var product: Product
-    @EnvironmentObject var cart: CartViewModel
+    @ObservedObject var viewModel: ProductCellViewModel
     
     //MARK: - Body
     var body: some View {
-        Button(action: {
-            if count > 0 {
-                count -= 1
-                cart.removeFromCart(product: product)
-            }
-        }, label: {
+        Button(action: viewModel.decrementQuantity, label: {
             Image(systemName: "minus.circle.fill")
                 .resizable()
                 .foregroundColor(.appGreen)
@@ -115,7 +101,16 @@ struct ReductionButtonView: View {
 
 
 //MARK: - Preview
-//#Preview {
-//    let sampleProduct = ProductList.Vegetables.first!
-//    ProductCellView(product: .constant(sampleProduct))
-//}
+#Preview {
+    ProductCellView(
+        productCellViewModel: ProductCellViewModel(
+            product: Product(
+                image: "banana",
+                title: "Banana",
+                price: 3.99
+            ),
+            cartViewModel: CartViewModel()
+        )
+    )
+    .environmentObject(CartViewModel())
+}
