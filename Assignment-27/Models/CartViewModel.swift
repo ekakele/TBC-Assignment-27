@@ -18,6 +18,8 @@ final class CartViewModel: ObservableObject {
         return String(format: "%.2f", total)
     }
     
+    @Published var discountedTotal: Double = 0.0
+    
     //MARK: - Methods
     func addToCart(product: Product) {
         if let index = items.firstIndex(where: { $0.id == product.id }) {
@@ -43,7 +45,15 @@ final class CartViewModel: ObservableObject {
         if let index = items.firstIndex(where: { $0.id == product.id }) {
             if items[index].quantity > 0 {
                 items.remove(at: index)
+                applyDiscount()
             }
         }
+    }
+    
+    func applyDiscount() {
+        let total = items.reduce(0) { sum, product in
+            sum + (product.price * Double(product.quantity))
+        }
+        discountedTotal = total * 0.7
     }
 }

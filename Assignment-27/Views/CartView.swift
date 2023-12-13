@@ -10,6 +10,8 @@ import SwiftUI
 struct CartView: View {
     //MARK: - Properties
     @EnvironmentObject var cartViewModel: CartViewModel
+    @State private var isDiscountApplied = false
+    @State private var isVoucherDepleted = false
     
     //MARK: - Body
     var body: some View {
@@ -28,9 +30,50 @@ struct CartView: View {
                         .font(.system(size: 20))
                         .bold()
                 }
+                
+                Image("discountVoucher")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .onTapGesture {
+                        if !isDiscountApplied {
+                            isDiscountApplied = true
+                            cartViewModel.applyDiscount()
+                        } else {
+                            isVoucherDepleted = true
+                        }
+                    }
+                
+                if isVoucherDepleted {
+                    HStack {
+                        Spacer()
+                        
+                        Text("Your voucher has been depleted")
+                            .font(.system(size: 20))
+                            .bold()
+                            .foregroundColor(.red)
+                        
+                        Spacer()
+                    }
+                } else if isDiscountApplied {
+                    HStack {
+                        Text("Discounted Price:")
+                            .font(.system(size: 20))
+                            .bold()
+                            .foregroundColor(.red)
+                        
+                        Spacer()
+                        
+                        Text(String(format: "%.2f$", cartViewModel.discountedTotal))
+                            .font(.system(size: 20))
+                            .bold()
+                            .foregroundColor(.red)
+                    }
+                }
             }
-            .navigationBarTitle("My Cart", displayMode: .inline)
+            
+            
         }
+        .navigationBarTitle("My Cart", displayMode: .inline)
     }
 }
 
