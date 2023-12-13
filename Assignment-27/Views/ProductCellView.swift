@@ -107,7 +107,8 @@ struct ReductionButtonView: View {
             product: Product(
                 image: "banana",
                 title: "Banana",
-                price: 3.99
+                price: 3.99,
+                stockAmount: 2
             ),
             cartViewModel: CartViewModel()
         )

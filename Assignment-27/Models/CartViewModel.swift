@@ -23,11 +23,15 @@ final class CartViewModel: ObservableObject {
     //MARK: - Methods
     func addToCart(product: Product) {
         if let index = items.firstIndex(where: { $0.id == product.id }) {
-            items[index].quantity += 1
+            if items[index].quantity < product.stockAmount {
+                items[index].quantity += 1
+            } else {  return }
         } else {
-            var newProduct = product
-            newProduct.quantity = 1
-            items.append(newProduct)
+            if product.stockAmount > 0 {
+                var newProduct = product
+                newProduct.quantity = 1
+                items.append(newProduct)
+            } else {  return }
         }
     }
     
